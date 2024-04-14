@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="col-md-6 offset-md-3">
+    {% if user.is_authenticated %}
+        <h1>Hello</h1>
+    {% else %}
+    <form method="POST" action="{% url 'home' %}" autocomplete="off">
+        <h1>Log In</h1>
+        <br/>
+        {% csrf_token %}
+        <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" name="username" placeholder="Enter username" required autofocus>
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" name="password" placeholder="Enter password" required autofocus>
+            </div>
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </form>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
